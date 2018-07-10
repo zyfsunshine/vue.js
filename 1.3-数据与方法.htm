@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>数据与方法</title>
+</head>
+<body>
+    <div id="app">
+        <p>{{data}}</p>
+        <button @click="watchaa"> it</button>
+       
+    </div>
+    <div id="app1">
+        <p>
+            {{foo}}
+        </p>
+        <button @click="foo='baz'">change it</button>
+    </div>
+   <script src="https://cdn.bootcss.com/vue/2.2.6/vue.js"></script>
+    <script>
+        // var data={a:1};
+        // var vm=new Vue({
+        //     el:'#app',
+        //     data:data
+        // })
+        //使用Object.freeze()会阻止修改现有的属性，意味着响应系统无法追踪变化
+        var obj={
+            foo:'bar'
+        }
+        Object.freeze(obj)
+        var vm1=new Vue({
+            el:'#app1',
+            data:obj
+           
+        })
+       //vue一些有用的实例属性与方法，他们都有前缀$,以便与用户定义的属性区分开来。
+       var data={a:1};
+        var vm3=new Vue({
+            el:'#app',
+            data:"data",
+            // methods:{
+            //    watchaa:function(){
+            //        alert("你好");
+            //        console.log("nihao");
+            //    } 
+            // }
+        })
+        vm.$data=data; //ture
+        vm.$el=document.getElementById('app');// ture
+        // $watch 是一个实例方法
+        // vm.$watch('a', function (newValue, oldValue) 
+        // 这个回调将在 `vm.a` 改变后调用
+    </script> 
+</body>
+</html>
