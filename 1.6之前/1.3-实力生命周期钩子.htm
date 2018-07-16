@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>实力生命周期钩子</title>
+</head>
+<body>
+   <!-- 叫做生命周期钩子的函数  -->
+   <!-- //created钩子可以用来在一个实例被创建之后执行代码 -->
+   <div id="app">
+      <button @click="created">点击我</button>
+   </div>
+   <script src="https://cdn.bootcss.com/vue/2.2.6/vue.js"></script>
+   <script>
+   var vm=new Vue({
+       el:"#app",
+       data:{
+           a:1
+       },
+       created:function(){
+           console.log('a is:'+this.a)
+           alert('a is:'+this.a)
+       }
+   })
+   //其他钩子函数，在实行生命周期的不同阶段被调用，如mounted,updated和destroyed
+   //生命周期钩子的this指向调用它的vue实例
+//    不要在选项属性或回调上使用箭头函数，
+// 比如 created: () => console.log(this.a) 或
+//  vm.$watch('a', newValue => this.myMethod())。
+//  因为箭头函数是和父级上下文绑定在一起的，this 
+//  不会是如你所预期的 Vue 实例，经常导致
+//   Uncaught TypeError: Cannot read property of undefined
+//    或 Uncaught TypeError: this.myMethod is not a function 之类的错误。
+   
+   </script>
+</body>
+</html>
